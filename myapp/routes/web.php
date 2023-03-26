@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\EmpleadosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController; 
 use App\Http\Controllers\LlamadaController; 
-use App\Http\Controllers\OperacionesController; 
-
+use App\Http\Controllers\OperacionesController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\ArchivosFotograficosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +70,22 @@ Route::get('/resta/{numero1}/{numero2}', [OperacionesController::class, 'resta']
 Route::get('/division/{numero1}/{numero2}', [OperacionesController::class, 'division']);
 Route::get('/multiplicacion/{numero1}/{numero2}', [OperacionesController::class, 'multiplicacion']);
 Route::get('/show/{ok}', [OperacionesController::class, 'show']);
+
+//products
+
+Route::get('/IndexProducts',[ProductsController::class,'index']); 
+Route::get('/editProduct/{id}',[ProductsController::class,'edit']); 
+Route::put('/updateProduct',[ProductsController::class,'update']); 
+Route::get('/deleteProduct/{id}',[ProductsController::class,'eliminarProducto']); 
+//empleados
+
+Route::get('/listaEmpleados',[EmpleadosController::class,'index']);
+Route::get('/editEmployee/{id}',[EmpleadosController::class,'edit']); 
+Route::put('/updateEmployee',[EmpleadosController::class,'update']);
+Route::get('/deleteEmployee/{id}',[EmpleadosController::class,'deleteEmployee']);
+// employees
+
+route:: get('/IndexEmployees',[EmployeesController::class,'index']);
+//Archivos Fotograficos
+Route::get('/IndexArchivoFotograficos',[ArchivosFotograficosController::class,'index']);
+Route::post('/guardaArchivoFotograficos','App\Http\Controllers\ArchivosFotograficosController@store');
